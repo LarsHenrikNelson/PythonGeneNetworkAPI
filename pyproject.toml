@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genenetworkapi"
+description = "Python interface to the GeneNetwork REST API."
+readme = "README.md"
+authors = [{ name = "Lars Henrik Nelson", email = "larshnelson@protonmail.com" }]
+dynamic = ["version"]
+keywords = ["genomics", "analysis"]
+dependencies = [
+    "pandas",
+    "requests",
+]
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+
+[project.optional-dependencies]
+testing = [
+    "pytest>=6.0"
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "genenetworkapi.__version__"}

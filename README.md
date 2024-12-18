@@ -309,11 +309,7 @@ To get the genotypes of a group:
 
 ```python
 gnapi.get_geno("BXD").iloc[:10]
-```
-
-    c:\Users\lhn6\pythongenenetworkapi\genenetworkapi\utils_geno.py:30: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
-      df = pd.read_csv(stringbytes, header=header, sep="\t")
-    
+``` 
 
 <table border="1" class="dataframe">
   <thead>

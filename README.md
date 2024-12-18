@@ -309,8 +309,8 @@ To get the genotypes of a group:
 
 ```python
 gnapi.get_geno("BXD").iloc[:10]
-``` 
-
+```
+    
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -775,11 +775,7 @@ be missing.
 
 ```python
 gnapi.get_pheno("HSNIH-Palmer").iloc[81:100]
-```
-
-    c:\Users\lhn6\pythongenenetworkapi\genenetworkapi\get_data.py:18: DtypeWarning: Columns (443,444,445,446) have mixed types. Specify dtype option on import or set low_memory=False.
-      df = pd.read_csv(stringbytes, header=0, sep=",")
-    
+``` 
 
 <table border="1" class="dataframe">
   <thead>

@@ -1,30 +1,6 @@
-import requests
-import tempfile
-
 from .query import GN_URL
 from .utils_geno import genofile_location, has_genofile_meta
-
-
-def _download(url, filepath: None | str = None):
-    with requests.get(url, stream=True) as r:
-        r.raise_for_status()
-        if filepath is None:
-            with tempfile.TemporaryFile() as fp:
-                for chunk in r.iter_content(chunk_size=8192):
-                    fp.write(chunk)
-                fp.seek(0)
-                output = fp.readlines()
-        else:
-            with open(filepath, "wb") as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    # If you have chunk encoded response uncomment if
-                    # and set chunk_size parameter to None.
-                    # if chunk:
-                    f.write(chunk)
-                fp.seek(0)
-                output = fp.readlines()
-    output = [x.decode() for x in output]
-    return output
+from .._utils import _download
 
 
 def download_geno(group, filepath: None | str = None, format: str = "geno"):

@@ -15,6 +15,9 @@ def check_gn():
 
 def _convert_to_df(json: dict | list):
     if isinstance(json, dict):
+        # Only need to do this because the status code is not correct sometimes.
+        if "errors" in json:
+            raise AttributeError("Dataset not in GeneNetwork")
         json = [json]
     return pd.DataFrame(json)
 
@@ -22,3 +25,5 @@ def _convert_to_df(json: dict | list):
 def _check_status(status, error_text):
     if status >= 500 and status < 600:
         raise AttributeError(error_text)
+    if status == 204:
+        raise AttributeError("No results.")

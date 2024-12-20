@@ -46,4 +46,7 @@ def get_omics(dataset: str) -> pd.DataFrame:
     tempstring = "".join(omics_file)
     stringbytes = StringIO(tempstring)
     df = pd.read_csv(stringbytes, header=0, sep=",")
+    df = df.T
+    df.columns = df.iloc[0].reset_index()
+    df = df.drop(df.index[0])
     return df

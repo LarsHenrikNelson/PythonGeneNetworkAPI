@@ -12,10 +12,7 @@ def convert_probeset_from_file(filepath: str | Path):
         "r",
     ) as w:
         m = w.readlines()
-    indices = [index for index, i in enumerate(m) if i[0] == "#"]
-    new_string = StringIO("".join(m[indices[1] + 2 :]))
-    probe_set = pd.read_csv(new_string, header=0, sep="\t")
-    probe_set = probe_set.drop(columns=["Unnamed: 2"])
+    probe_set = convert_probeset_from_string(m)
     probe_set.to_csv(filepath.with_suffix(".csv"))
     return probe_set
 

@@ -1,4 +1,5 @@
 from pathlib import Path
+from functools import lru_cache
 
 import pandas as pd
 import requests
@@ -8,6 +9,7 @@ from .._utils import _download
 from .probeset import convert_probeset_from_string
 
 
+@lru_cache(maxsize=10)
 def get_accession_info():
     data_page = "https://info.genenetwork.org/index.php"
     xx = requests.get(data_page).text
@@ -53,6 +55,7 @@ def _accession_files(urls):
     return output
 
 
+@lru_cache(maxsize=10)
 def get_accession_data(accession_number: str | list[str]):
     if isinstance(accession_number, str):
         accession_number = [accession_number]

@@ -1,8 +1,11 @@
 import tempfile
+from functools import lru_cache
+
 
 import requests
 
 
+@lru_cache(maxsize=30)
 def _download(url, filepath: None | str = None):
     with requests.get(url, stream=True) as r:
         r.raise_for_status()

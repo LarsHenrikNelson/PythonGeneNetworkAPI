@@ -5,6 +5,8 @@ from .query import _convert_to_df, _check_status
 
 
 def info_dataset(dataset: str, trait: str = ""):
+    if isinstance(trait, (int, float)):
+        trait = str(trait)
     if len(trait) != 0:
         url = f"{GN_URL}/dataset/{dataset}/{trait}"
     else:
@@ -15,6 +17,8 @@ def info_dataset(dataset: str, trait: str = ""):
 
 
 def info_pheno(group: str, trait: str = ""):
+    if isinstance(trait, (int, float)):
+        trait = str(trait)
     if len(trait) == 0:
         url = f"{GN_URL}/traits/{group}Publish.json"
     else:

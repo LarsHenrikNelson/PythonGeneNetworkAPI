@@ -19,7 +19,7 @@ the phenotype data is "omic" data which are organized as _datasets_.
 
 
 ```python
-import genenetworkapi as gnapi
+import genenetworkapi.v_pre1 as gnapi
 ```
 
 ## Check connection

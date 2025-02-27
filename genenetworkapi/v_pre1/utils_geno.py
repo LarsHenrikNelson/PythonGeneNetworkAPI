@@ -1,10 +1,22 @@
-import re
+# import re
 from io import StringIO
 
 import requests
 import pandas as pd
 
 from .query import GN_URL
+
+
+def _convert_probeset_from_string(data: str):
+    index = 0
+    firstline = data[index]
+    while firstline[0] == "#" or firstline[0] == "@":
+        index += 1
+        firstline = data[index]
+    new_string = StringIO("".join(data[index:]))
+    probe_set = pd.read_csv(new_string, header=0, sep="\t")
+    probe_set = probe_set.loc[:, ~probe_set.columns.str.contains("^Unnamed")]
+    return probe_set
 
 
 def parse_geno(filename: str | list[str]):
@@ -14,21 +26,7 @@ def parse_geno(filename: str | list[str]):
             lines = f.readlines()
     else:
         lines = filename
-
-    # which lines have # as first character
-    firstpound = [bool(re.match(r"^#", x)) for x in lines]
-
-    # which lines have @ as first character
-    firstat = [bool(re.match(r"^@", x)) for x in lines]
-
-    # find the first index where the difference is less than 0
-    endcomment = [i or j for i, j in zip(firstpound, firstat)]
-    header = [index for index, val in enumerate(endcomment) if not val][0]
-
-    tempstring = "".join(lines)
-    stringbytes = StringIO(tempstring)
-    df = pd.read_csv(stringbytes, header=header, sep="\t")
-
+    df = _convert_probeset_from_string(lines)
     return df
 
 

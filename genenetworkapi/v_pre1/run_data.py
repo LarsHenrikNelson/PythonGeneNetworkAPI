@@ -51,7 +51,6 @@ def run_correlation(
     n_result: int = 500,
 ) -> pd.DataFrame:
     url = f"{GN_URL}/correlation?trait_id={trait_id}&db={db}&target_db={target_db}&type={tp}&method={method}&return={n_result}"
-    print(url)
     res = requests.get(url)
     _check_status(
         res.status_code, "Dataset, trait and/or group are not in GeneNetwork database."

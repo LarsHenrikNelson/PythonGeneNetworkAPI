@@ -20,6 +20,7 @@ the phenotype data is "omic" data which are organized as _datasets_.
 
 ```python
 import genenetworkapi.v_pre1 as gnapi
+import genenetworkapi.info as gninfo
 ```
 
 ## Check connection
@@ -48,6 +49,23 @@ Which species have data on them?
 gnapi.list_species()
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -143,6 +161,13 @@ gnapi.list_species()
       <td>bat</td>
       <td>27638</td>
     </tr>
+    <tr>
+      <th>12</th>
+      <td>Caenorhabditis elegans</td>
+      <td>13</td>
+      <td>Nematode</td>
+      <td>6239</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -156,6 +181,23 @@ To get information on a single species:
 gnapi.list_species("rat")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -190,6 +232,23 @@ might be interested in.
 gnapi.list_groups("rat")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -311,6 +370,24 @@ To get the genotypes of a group:
 gnapi.get_geno("BXD").iloc[:10]
 ```
     
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -595,12 +672,27 @@ To list the (omic) datasets available for a group, you have to use the
 name as listed in the group list for a species:
 
 
-
-
 ```python
 gnapi.list_datasets("HSNIH-Palmer")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -775,8 +867,29 @@ be missing.
 
 ```python
 gnapi.get_pheno("HSNIH-Palmer").iloc[81:100]
-``` 
+```
 
+    c:\Users\nelso\PythonGeneNetworkAPI\genenetworkapi\v_pre1\get_data.py:30: DtypeWarning: Columns (443,444,445,446) have mixed types. Specify dtype option on import or set low_memory=False.
+      df = pd.read_csv(stringbytes, header=0, sep=",")
+    
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1276,37 +1389,54 @@ For instance, if you want to acquire the phenotype matrix corresponding to "HSNI
 gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>id</th>
-      <th>ENSRNOG00000000001</th>
-      <th>ENSRNOG00000000007</th>
-      <th>ENSRNOG00000000008</th>
-      <th>ENSRNOG00000000009</th>
-      <th>ENSRNOG00000000010</th>
-      <th>ENSRNOG00000000012</th>
-      <th>ENSRNOG00000000017</th>
-      <th>ENSRNOG00000000021</th>
-      <th>ENSRNOG00000000024</th>
+      <th>(0, 00071F4FAF)</th>
+      <th>(1, 00071F6771)</th>
+      <th>(2, 00071F768E)</th>
+      <th>(3, 00071F95F9)</th>
+      <th>(4, 00071FB160)</th>
+      <th>(5, 00071FB747)</th>
+      <th>(6, 00072069AD)</th>
+      <th>(7, 0007207A73)</th>
+      <th>(8, 0007207BE7)</th>
+      <th>(9, 00072126F3)</th>
       <th>...</th>
-      <th>ENSRNOG00000062292</th>
-      <th>ENSRNOG00000062293</th>
-      <th>ENSRNOG00000062297</th>
-      <th>ENSRNOG00000062299</th>
-      <th>ENSRNOG00000062300</th>
-      <th>ENSRNOG00000062301</th>
-      <th>ENSRNOG00000062302</th>
-      <th>ENSRNOG00000062303</th>
-      <th>ENSRNOG00000062304</th>
-      <th>ENSRNOG00000062307</th>
+      <th>(6161, 0007899914)</th>
+      <th>(6162, 0007899976)</th>
+      <th>(6163, 0007929913)</th>
+      <th>(6164, 0007929918)</th>
+      <th>(6165, 0007929945)</th>
+      <th>(6166, 00077E840E)</th>
+      <th>(6167, 00077E9879)</th>
+      <th>(6168, 00077E9920)</th>
+      <th>(6169, 00077E9D84)</th>
+      <th>(6170, 00077E949D)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>00071F4FAF</td>
+      <th>ENSRNOG00000000001</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1329,8 +1459,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>00071F6771</td>
+      <th>ENSRNOG00000000007</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1353,8 +1483,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>00071F768E</td>
+      <th>ENSRNOG00000000008</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1377,8 +1507,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>00071F95F9</td>
+      <th>ENSRNOG00000000009</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1401,8 +1531,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>00071FB160</td>
+      <th>ENSRNOG00000000010</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1449,8 +1579,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>...</td>
     </tr>
     <tr>
-      <th>6166</th>
-      <td>00077E840E</td>
+      <th>ENSRNOG00000062301</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1473,8 +1603,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>6167</th>
-      <td>00077E9879</td>
+      <th>ENSRNOG00000062302</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1497,8 +1627,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>6168</th>
-      <td>00077E9920</td>
+      <th>ENSRNOG00000062303</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1521,8 +1651,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>6169</th>
-      <td>00077E9D84</td>
+      <th>ENSRNOG00000062304</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1545,8 +1675,8 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
       <td>x</td>
     </tr>
     <tr>
-      <th>6170</th>
-      <td>00077E949D</td>
+      <th>ENSRNOG00000062307</th>
+      <td>x</td>
       <td>x</td>
       <td>x</td>
       <td>x</td>
@@ -1570,7 +1700,7 @@ gnapi.get_omics("HSNIH-Rat-IL-RSeq-0818")
     </tr>
   </tbody>
 </table>
-<p>6171 rows × 32624 columns</p>
+<p>32623 rows × 6171 columns</p>
 </div>
 
 
@@ -1588,6 +1718,23 @@ and the trait number:
 gnapi.info_dataset(dataset="HSNIH-Palmer", trait="10308")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1621,6 +1768,23 @@ Get a list of the maximum LRS for each trait and position.
 gnapi.info_pheno(group="HXBBXH").iloc[:10]
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1789,9 +1953,26 @@ You could also specify a group and a trait number or a dataset and a probename.
 
 
 ```python
-gnapi.info_pheno(dataset="BXD", trait="10001")
+gnapi.info_pheno(group="BXD", trait="10001")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1821,6 +2002,23 @@ gnapi.info_pheno(dataset="BXD", trait="10001")
 gnapi.info_pheno(group="HC_M2_0606_P", trait="1436869_at")
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1880,7 +2078,7 @@ print(name)
 print(df.iloc[:10])
 ```
 
-    BXD_GWA_U07BSX
+    BXD_GWA_U9WK31
              Mb  additive chr  lod_score            name   p_value
     0  3.001490  0.496897   1   0.548219  rsm10000000001  0.282996
     1  3.010274  0.496897   1   0.548219      rs31443144  0.282996
@@ -1916,6 +2114,120 @@ gnapi.run_rqtl(db="BXDPublish", trait_id="10015").iloc[:10]
 ```
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mb</th>
+      <th>cM</th>
+      <th>chr</th>
+      <th>lod_score</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.001490</td>
+      <td>3.001490</td>
+      <td>1</td>
+      <td>0.158418</td>
+      <td>rsm10000000001</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.010274</td>
+      <td>3.010274</td>
+      <td>1</td>
+      <td>0.158468</td>
+      <td>rs31443144</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.492195</td>
+      <td>3.492195</td>
+      <td>1</td>
+      <td>0.160711</td>
+      <td>rs6269442</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.511204</td>
+      <td>3.511204</td>
+      <td>1</td>
+      <td>0.160801</td>
+      <td>rs32285189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.659804</td>
+      <td>3.659804</td>
+      <td>1</td>
+      <td>0.161506</td>
+      <td>rs258367496</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.777023</td>
+      <td>3.777023</td>
+      <td>1</td>
+      <td>0.162066</td>
+      <td>rs32430919</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3.812265</td>
+      <td>3.812265</td>
+      <td>1</td>
+      <td>0.162235</td>
+      <td>rs36251697</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.430623</td>
+      <td>4.430623</td>
+      <td>1</td>
+      <td>0.165229</td>
+      <td>rs30658298</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.518714</td>
+      <td>4.518714</td>
+      <td>1</td>
+      <td>0.165665</td>
+      <td>rs31879829</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4.776319</td>
+      <td>4.776319</td>
+      <td>1</td>
+      <td>0.166947</td>
+      <td>rs36742481</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Correlation
 
 This function correlates a trait in a dataset against all traits in a
@@ -1935,9 +2247,23 @@ gnapi.run_correlation(
 ).iloc[:10]
 ```
 
-    https://genenetwork.org/api/v_pre1/correlation?trait_id=1427571_at&db=HC_M2_0606_P&target_db=BXDPublish&type=sample&method=pearson&return=500
-    
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2024,3 +2350,20 @@ gnapi.run_correlation(
 </div>
 
 
+
+# Info
+
+### Get the accession information
+To get probeset info which contain the GN accesssion numbers and gene names you can use the info module of genenetworkapi
+
+
+```python
+accession_info = gninfo.get_accession_info()
+```
+
+To get the probesets for a specifiific accession number you can use the get_accession_data function. The probesets contain the gene name to GN number association.
+
+
+```python
+data = gninfo.get_accession_data("135")
+```

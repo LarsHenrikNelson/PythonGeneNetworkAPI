@@ -27,7 +27,7 @@ def get_pheno(dataset: str, filepath: None | str = None) -> pd.DataFrame:
     pheno_file = download_pheno(dataset, filepath)
     tempstring = "".join(pheno_file)
     stringbytes = StringIO(tempstring)
-    df = pd.read_csv(stringbytes, header=0, sep=",")
+    df = pd.read_csv(stringbytes, header=0, sep=",", low_memory=False)
     return df
 
 
